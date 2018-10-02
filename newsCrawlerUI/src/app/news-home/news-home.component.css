@@ -1,3 +1,7 @@
 .jumbotron.search-bar{
     padding: 2rem 1rem;
 }
+
+.btn.btn-lg.btn-primary{
+    color: white;
+}
