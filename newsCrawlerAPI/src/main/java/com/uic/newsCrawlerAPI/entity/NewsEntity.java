@@ -1,7 +1,10 @@
 package com.uic.newsCrawlerAPI.entity;
 
+import java.util.UUID;
+
 public class NewsEntity {
 
+	private String newsId;
 	private String sourceName;
 	private String author;
 	private String title;
@@ -16,6 +19,7 @@ public class NewsEntity {
 
 	public NewsEntity(String sourceName, String author, String title, String description, String url, String urlToImage,
 			String publishedAt, String content) {
+		this.newsId = UUID.randomUUID().toString();
 		this.sourceName = sourceName;
 		this.author = author;
 		this.title = title;
@@ -24,6 +28,15 @@ public class NewsEntity {
 		this.urlToImage = urlToImage;
 		this.publishedAt = publishedAt;
 		this.content = content;
+	}
+	
+
+	public String getNewsId() {
+		return newsId;
+	}
+
+	public void setNewsId(String newsId) {
+		this.newsId = UUID.randomUUID().toString();
 	}
 
 	public String getSourceName() {

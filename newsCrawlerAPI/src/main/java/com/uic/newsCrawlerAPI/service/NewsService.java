@@ -6,5 +6,5 @@ import com.uic.newsCrawlerAPI.entity.NewsEntity;
 
 public interface NewsService {
 
-	ArrayList<NewsEntity> getNews();
+	ArrayList<NewsEntity> getNews(String date);
 }
