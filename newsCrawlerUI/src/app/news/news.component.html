@@ -1,0 +1,18 @@
+
+      <div class="card-header" id="heading{{news.newsId}}">
+        <h5 class="mb-0">
+          <img src="{{news.urlToImage}}" width="38em" height="38em" >
+          {{news.title}}
+          <button class="btn btn-link" type="button" data-toggle="collapse" attr.data-target="#collapse{{news.newsId}}" aria-expanded="true" attr.aria-controls="collapse{{news.newsId}}">
+              {{news.sourceName}}
+            </button>
+        </h5>
+          </div>
+  
+      <div id="collapse{{news.newsId}}" class="collapse" attr.aria-labelledby="heading{{news.newsId}}" data-parent="#accordionExample">
+        <div class="card-body">
+          <p><b>By: {{news.author}}</b> Published At: {{news.publishedAt}}</p>
+            {{news.content}} <a href ="{{news.url}}" target = "_blank">read more...</a>
+          </div>
+      </div>
+    

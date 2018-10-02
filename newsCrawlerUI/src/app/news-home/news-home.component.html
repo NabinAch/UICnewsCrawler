@@ -1,0 +1,28 @@
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">UIC News Crawler</h1>
+      <p class="lead text-muted">Has UIC been mentioned or reviewed by news articles the past 6 months?</p>
+      <p>
+        Check using custom Date:
+        <br>
+        <input type ="date" [(ngModel)]="searchDate" (change)="getNews()">
+      </p>
+    </div>
+  </section>
+
+<main role="main" class="container">
+    <div class="jumbotron search-bar">
+      <div class = "row">
+        <div class = "col"><a class="btn btn-lg btn-primary" (click)="subDate()" role="button">&laquo; Day Before </a></div>
+        <div class = "col text-md-center"><button type="button" class="btn btn-outline-info">{{searchDate}}</button></div>
+        <div class = "col"><span class="float-right"><a class="btn btn-lg btn-primary" (click)="addDate()" role="button">Next Day &raquo;</a></span></div>
+      </div>
+    </div>
+  </main>
+<main role="main" class="container">
+    <div class="accordion" id="accordionExample">
+        <div *ngFor="let article of news$ | async" class="card">
+            <app-news [news]="article"></app-news>
+          </div>
+</div>
+</main>
