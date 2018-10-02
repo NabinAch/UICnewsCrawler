@@ -19,6 +19,8 @@ import com.uic.newsCrawlerAPI.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService {
 
+	private String newsApiUrl = "https://newsapi.org/v2/everything?q=University+of+illinois+at+chicago&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=da5ab06cebed43a5be8d9859c885058c";
+
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -29,13 +31,8 @@ public class NewsServiceImpl implements NewsService {
 	public ArrayList<NewsEntity> getNews(String date) {
 
 		RestTemplate restTemplate = new RestTemplate();
-		String fooResourceUrl = "https://newsapi.org/v2/everything?q=University+of+illinois+at+chicago&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=da5ab06cebed43a5be8d9859c885058c";
-		fooResourceUrl=fooResourceUrl.replace("fromDate", date);
-		LocalDate toDate = LocalDate.parse(date);
-		toDate = toDate.plusDays(1);
-		fooResourceUrl=fooResourceUrl.replace("toDate", toDate.toString());
-		System.out.println(fooResourceUrl);
-		ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl, String.class);
+
+		ResponseEntity<String> response = restTemplate.getForEntity(addDateToResourceUrl(date), String.class);
 
 		ArrayList<NewsEntity> listNews = new ArrayList<>();
 
@@ -51,6 +48,15 @@ public class NewsServiceImpl implements NewsService {
 		}
 
 		return listNews;
+	}
+
+	private String addDateToResourceUrl(String date) {
+
+		String resourceUrl = newsApiUrl.replace("fromDate", date);
+		LocalDate toDate = LocalDate.parse(date);
+		toDate = toDate.plusDays(1);
+		resourceUrl = resourceUrl.replace("toDate", toDate.toString());
+		return resourceUrl;
 	}
 
 }
