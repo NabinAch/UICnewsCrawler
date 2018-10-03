@@ -8,7 +8,6 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { NewsComponent } from './news/news.component';
 import { NewsHomeComponent } from './news-home/news-home.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,7 +17,6 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     TopBarComponent,
-    SearchBarComponent,
     NewsComponent,
     NewsHomeComponent,
     FooterComponent
