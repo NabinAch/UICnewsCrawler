@@ -8,7 +8,7 @@ import { NewsEntity } from '../Entity/newsEntity';
 })
 export class NewsComponent implements OnInit {
 
-  @Input() news : NewsEntity;
+  @Input() news: NewsEntity;
 
   constructor() { }
 

@@ -19,7 +19,7 @@ import com.uic.newsCrawlerAPI.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-	private String newsApiUrl = "https://newsapi.org/v2/everything?q=University+of+illinois+at+chicago&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=da5ab06cebed43a5be8d9859c885058c";
+	private String newsApiUrl = "https://newsapi.org/v2/everything?q=University+of+illinois+at+chicago&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=1551729b5ada4b89baad54697d45ff15";
 
 	@Autowired
 	RestTemplate restTemplate;
@@ -38,6 +38,7 @@ public class NewsServiceImpl implements NewsService {
 
 		try {
 			JsonNode root = objectMapper.readTree(response.getBody());
+			System.out.println(root);
 			String articles = root.findValue("articles").toString();
 
 			listNews = objectMapper.readValue(articles, new TypeReference<List<NewsEntity>>() {

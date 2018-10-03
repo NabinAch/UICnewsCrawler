@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import{
+import {
     HttpEvent,
     HttpInterceptor,
     HttpHandler,
@@ -10,8 +10,8 @@ import { Observable } from '../../../node_modules/rxjs';
 
 
 @Injectable()
-export class Interceptor implements HttpInterceptor{
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+export class Interceptor implements HttpInterceptor {
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log("This message is intercepted");
         console.log(req);
         return next.handle(req);

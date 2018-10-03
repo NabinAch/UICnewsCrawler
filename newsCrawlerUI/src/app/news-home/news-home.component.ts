@@ -11,26 +11,24 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
   templateUrl: './news-home.component.html',
   styleUrls: ['./news-home.component.css']
 })
-export class NewsHomeComponent implements OnInit {ß
+export class NewsHomeComponent implements OnInit {
 
   news$: Observable<Array<NewsEntity>>;
   searchDate: any;
   dateValue: any;
-  dayBefore: boolean = false;
-  dayAfter: boolean = false;
 
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   constructor(private _svc: NewsServiceService, private datePipe: DatePipe) {
     this.datePickerConfig = Object.assign({},
-    {
-      containerClass: 'theme-dark-blue',
-      showWeekNumbers: false,
-      minDate: new Date(new Date().setDate(new Date().getDate()-30)),
-      maxDate: new Date(),
-      dateInputFormat: 'YYYY-MM-DD'
-    })
-   }
+      {
+        containerClass: 'theme-dark-blue',
+        showWeekNumbers: false,
+        minDate: new Date(new Date().setDate(new Date().getDate() - 30)),
+        maxDate: new Date(),
+        dateInputFormat: 'YYYY-MM-DD'
+      })
+  }
 
   ngOnInit() {
     this.searchDate = this.datePipe.transform(new Date(), "yyyy-MM-dd");
@@ -39,39 +37,27 @@ export class NewsHomeComponent implements OnInit {ß
   }
 
   getNews(): void {
-   //ng  this.searchDate = this.datePipe.transform(new Date(this.searchDate), "yyyy-MM-dd")
-    //this.news$ = this._svc.getNews(this.searchDate);
-    console.log("check check")
-    console.log(this.searchDate);
-    //this.searchDate = this.datePipe.transform(new Date(this.searchDate), "yyyy-MM-dd")
     this.news$ = this._svc.getNews(this.searchDate);
   }
 
-  addDate(){
+  addDate() {
     const addDate = new Date(this.searchDate);
-    addDate.setDate(addDate.getDate()+1)
-    this.dayAfter = true;
-   if(addDate<=new Date())
-   {
-    this.dayAfter = true;
-    addDate.setDate(addDate.getDate()+1);
-    this.searchDate = this.datePipe.transform(addDate, "yyyy-MM-dd")
-    this.dateValue = this.searchDate;
-   }
+    addDate.setDate(addDate.getDate() + 1)
+    if (addDate <= new Date()) {
+      addDate.setDate(addDate.getDate() + 1);
+      this.dateValue = this.datePipe.transform(addDate, "yyyy-MM-dd")
+      }
   }
-  subDate(){
+  subDate() {
     const newDate = new Date(this.searchDate);
-    if(newDate>=new Date(new Date().setDate(new Date().getDate()-30)))
-    {
-    console.log(newDate);
-    this.searchDate = this.datePipe.transform(newDate, "yyyy-MM-dd")
-    this.dateValue = this.searchDate;
-  }
+    if (newDate >= new Date(new Date().setDate(new Date().getDate() - 30))) {
+      this.dateValue = this.datePipe.transform(newDate, "yyyy-MM-dd")
+      }
   }
 
-  selectDate(){
+  selectDate() {
     this.searchDate = this.datePipe.transform(this.dateValue, "yyyy-MM-dd")
-    this.getNews();
+   this.getNews();
   }
 
 }
