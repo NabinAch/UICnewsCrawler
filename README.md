@@ -123,3 +123,4 @@ ng build --configuration=production
 ## Improvement Pending
 
 * Implementing Database to store past news articles which will reduce expensive trips with 3rd party news service. 
+* Authentication and Authorization to limit access to the api with organization
