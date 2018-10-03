@@ -5,7 +5,7 @@ You can access demo [here](http://nabinacharya.com)
 
 ## Getting Started
 ### How to Use?
-* Click [here](http://nabinacharya.com)
+* Click [here](http://nabinacharya.com) to access application
 * Select a date
 * View the News Article details by clicking on the news source
 * Click read more to go to the news details webpage
