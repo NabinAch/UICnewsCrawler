@@ -107,7 +107,8 @@ ng build --configuration=production
 
 * [Spring Boot](https://spring.io/projects/spring-boot) - The web framework used for backend
 * [Maven](https://maven.apache.org/) - Dependency Management 
-* [Angular](https://angular.io/) - Used to generate RSS Feeds
+* [Angular](https://angular.io/) - The framework used for frontend
+* [NewsApi](https://newsapi.org/) - 3rd Party News Service
 
 ## Author
 
