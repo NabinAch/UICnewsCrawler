@@ -15,6 +15,7 @@ export class NewsHomeComponent implements OnInit {ß
 
   news$: Observable<Array<NewsEntity>>;
   searchDate: any;
+  dateValue: any;
   dayBefore: boolean = false;
   dayAfter: boolean = false;
 
@@ -32,12 +33,16 @@ export class NewsHomeComponent implements OnInit {ß
    }
 
   ngOnInit() {
-    this.searchDate = this.datePipe.transform(new Date(), "yyyy-MM-dd")
+    this.searchDate = this.datePipe.transform(new Date(), "yyyy-MM-dd");
+    this.dateValue = this.searchDate;
     this.getNews();
   }
 
   getNews(): void {
-    //console.log(this.searchDate);
+   //ng  this.searchDate = this.datePipe.transform(new Date(this.searchDate), "yyyy-MM-dd")
+    //this.news$ = this._svc.getNews(this.searchDate);
+    console.log("check check")
+    console.log(this.searchDate);
     //this.searchDate = this.datePipe.transform(new Date(this.searchDate), "yyyy-MM-dd")
     this.news$ = this._svc.getNews(this.searchDate);
   }
@@ -51,13 +56,21 @@ export class NewsHomeComponent implements OnInit {ß
     this.dayAfter = true;
     addDate.setDate(addDate.getDate()+1);
     this.searchDate = this.datePipe.transform(addDate, "yyyy-MM-dd")
-    this.getNews();
+    this.dateValue = this.searchDate;
    }
   }
   subDate(){
     const newDate = new Date(this.searchDate);
+    if(newDate>=new Date(new Date().setDate(new Date().getDate()-30)))
+    {
     console.log(newDate);
     this.searchDate = this.datePipe.transform(newDate, "yyyy-MM-dd")
+    this.dateValue = this.searchDate;
+  }
+  }
+
+  selectDate(){
+    this.searchDate = this.datePipe.transform(this.dateValue, "yyyy-MM-dd")
     this.getNews();
   }
 

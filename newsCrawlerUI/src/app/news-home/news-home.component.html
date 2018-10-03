@@ -5,7 +5,7 @@
       <p>
         Select the day:
         <br>
-        <input type ="text" bsDatepicker [bsConfig]="datePickerConfig" [(ngModel)]="searchDate" (change)="getNews()">
+        <input type ="text" bsDatepicker [bsConfig]="datePickerConfig" [(bsValue)]="dateValue" value="{{ dateValue | date:'yyyy-MM-dd' }}" (bsValueChange)="selectDate()">
       </p>
     </div>
   </section>
@@ -14,7 +14,7 @@
     <div class="jumbotron search-bar">
       <div class = "row">
         <div class = "col"><a class="btn btn-lg btn-primary" (click)="subDate()" role="button">&laquo; Day Before </a></div>
-        <div class = "col text-md-center"><h1>{{searchDate}}</h1></div>
+        <div class = "col text-md-center"><h1>{{dateValue | date}}</h1></div>
         <div class = "col"><span class="float-right"><a class="btn btn-lg btn-primary" (click)="addDate()" role="button" >Next Day &raquo;</a></span></div>
       </div>
     </div>
