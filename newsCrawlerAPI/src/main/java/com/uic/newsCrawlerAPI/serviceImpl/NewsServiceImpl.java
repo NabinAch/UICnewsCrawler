@@ -38,7 +38,6 @@ public class NewsServiceImpl implements NewsService {
 
 		try {
 			JsonNode root = objectMapper.readTree(response.getBody());
-			System.out.println(root);
 			String articles = root.findValue("articles").toString();
 
 			listNews = objectMapper.readValue(articles, new TypeReference<List<NewsEntity>>() {

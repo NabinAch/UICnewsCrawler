@@ -22,7 +22,6 @@ public class NewsController {
 	
 	@GetMapping
 	ArrayList<NewsEntity> getNews(@RequestParam String date){
-		System.out.println(date);
 		return newsService.getNews(date);
 	}
 	
