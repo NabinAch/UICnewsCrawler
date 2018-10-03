@@ -4,7 +4,13 @@ This app will display the list of news articles on the web which have mentioned 
 You can access demo [here](http://nabinacharya.com)
 
 ## Getting Started
+# How to Use?
+* Click [here](http://nabinacharya.com)
+* Select a date
+* View the News Article details by clicking on the news source
+* Click read more to go to the news details webpage
 
+# About
 This app is the bundle of 2 loosely coupled frontend and backend application 
 
 **NewsCrawlerAPI** is the backend application built on Spring Boot which communicates with third party News Services and exposes RESTful web service for client communication.
