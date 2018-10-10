@@ -30,8 +30,6 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public ArrayList<NewsEntity> getNews(String date) {
 
-		RestTemplate restTemplate = new RestTemplate();
-
 		ResponseEntity<String> response = restTemplate.getForEntity(addDateToResourceUrl(date), String.class);
 
 		ArrayList<NewsEntity> listNews = new ArrayList<>();
