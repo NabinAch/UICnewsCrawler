@@ -19,7 +19,7 @@ import com.uic.newsCrawlerAPI.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-	private String newsApiUrl = "https://newsapi.org/v2/everything?q=University+of+illinois+at+chicago&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=1551729b5ada4b89baad54697d45ff15";
+	private String newsApiUrl = "https://newsapi.org/v2/everything?q=keyword&from=fromDate&to=toDate&sortBy=publishedAt&apiKey=1551729b5ada4b89baad54697d45ff15";
 
 	@Autowired
 	RestTemplate restTemplate;
@@ -28,9 +28,9 @@ public class NewsServiceImpl implements NewsService {
 	ObjectMapper objectMapper;
 
 	@Override
-	public ArrayList<NewsEntity> getNews(String date) {
+	public ArrayList<NewsEntity> getNews(String date, String keyword) {
 
-		ResponseEntity<String> response = restTemplate.getForEntity(addDateToResourceUrl(date), String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity(addDateToResourceUrl(date, keyword), String.class);
 
 		ArrayList<NewsEntity> listNews = new ArrayList<>();
 
@@ -48,12 +48,13 @@ public class NewsServiceImpl implements NewsService {
 		return listNews;
 	}
 
-	private String addDateToResourceUrl(String date) {
+	private String addDateToResourceUrl(String date, String keyword) {
 
 		String resourceUrl = newsApiUrl.replace("fromDate", date);
 		LocalDate toDate = LocalDate.parse(date);
 		toDate = toDate.plusDays(1);
 		resourceUrl = resourceUrl.replace("toDate", toDate.toString());
+		resourceUrl = resourceUrl.replace("keyword", keyword);
 		return resourceUrl;
 	}
 
