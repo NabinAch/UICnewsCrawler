@@ -21,8 +21,8 @@ public class NewsController {
 	NewsService newsService;
 	
 	@GetMapping
-	ArrayList<NewsEntity> getNews(@RequestParam String date){
-		return newsService.getNews(date);
+	ArrayList<NewsEntity> getNews(@RequestParam String date, String keyword){
+		return newsService.getNews(date, keyword.trim());
 	}
 	
 }
